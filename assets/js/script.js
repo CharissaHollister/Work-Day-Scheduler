@@ -1,10 +1,14 @@
-// Code Quiz - Javascript
-//authored by Charissa Hollister 05/04/2022
+// Work Day Scheduler
+//authored by Charissa Hollister 05/10/2022
 //**************************** */
 
 
 //---------Global variables-----------
 var x = "";
+
+
+//-----------Get references from HTML------------
+var xxx = document.querySelector("#yyy");
 
 
 
@@ -28,12 +32,9 @@ var x = "";
 
 
 
-//-----------Get references from HTML------------
-var xxx = document.querySelector("#yyy");
-
 
 
 //---------------Add event listener-----------
-zzz.addEventListener('click', function(event) {
+zzz.addEventListener('click', function(event){
 
-}
+});
