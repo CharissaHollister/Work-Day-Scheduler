@@ -4,11 +4,23 @@
 
 
 //---------Global variables-----------
-var x = "";
+
+var todayDate = moment().format("MMM Do YY");  
+var dateUsed;
+var setDate = localStorage.getItem("dateUsed");
+if (setDate) {
+    dateUsed = JSON.parse(setDate);
+  } else {
+    dateUsed = [];
+  }
+var todayTasks = {
+    // info: "",
+    // timeBlock: ""
+  };
 
 
 //-----------Get references from HTML------------
-var xxx = document.querySelector("#yyy");
+//var xxx = document.querySelector("#yyy");
 
 
 
@@ -21,8 +33,13 @@ var xxx = document.querySelector("#yyy");
 //---------define functions---------
 
 //function to clear local storage
+function clearSchedule() {
+    localStorage.clear();
+    location.reload();
+  }
 
 //if nothing in localStorage, create a new object to track all task status arrays
+
 
 //-------create elements------------
 //create header row 
@@ -38,6 +55,7 @@ var xxx = document.querySelector("#yyy");
 //---------Date Input--------------
 //get date from local storage
     //if date empty in local storage put in today's date
+    
     //if date is today continue
     //if date in ls is the past ask user if they would like to 
     //clear ls and continue with today OR keep old date and tasks
@@ -78,9 +96,10 @@ var xxx = document.querySelector("#yyy");
 
 //---------------Add event listener-----------
 
-//clicks button "clearSchedule"
-    //clear ls
-    //refresh the page anew
+//clicks button "clearSchedule"  //clear ls  //refresh the page anew
+var clearButton = document.querySelector(".xxx")
+clearButton.addEventListener("click", clearSchedule);
+
 
 //clicks button "Save"
     //sends data from that row to ls
