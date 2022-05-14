@@ -53,12 +53,16 @@ console.log(tasksUsed)
 
 
 //---------define functions---------
+
+//---date in header---
 function timeBlockCreation(){
     var dateBlock = document.querySelector("#currentDay");
     dateBlock.textContent = dateUsed;
     localStorage.setItem("dateUsed", JSON.stringify(dateUsed));
 }
 timeBlockCreation();
+
+//------color indicator of past, present, future-----
 //currentHour = 12 //constant for testing
 function relativeTime(){
 for(var i=1; i < 10 ; i++){
@@ -70,6 +74,7 @@ for(var i=1; i < 10 ; i++){
 }}
 relativeTime();
 
+//
 
 
 
@@ -77,11 +82,13 @@ relativeTime();
 
 
 
-//function to clear local storage
-// function clearSchedule() {
-//     localStorage.clear();
-//     location.reload();
-//   }
+
+// function to clear local storage
+function clearSchedule() {
+    if (confirm("Current tasks will be deleted; Proceed with 'Clear Schedule'?"))
+    {    localStorage.clear();
+        location.reload();}
+  }
 
 //if nothing in localStorage, create a new object to track all task status arrays
 
@@ -149,8 +156,8 @@ relativeTime();
 //---------------Add event listener-----------
 
 //clicks button "clearSchedule"  //clear ls  //refresh the page anew
-// var clearButton = document.querySelector(".xxx")
-// clearButton.addEventListener("click", clearSchedule);
+var clearButton = document.querySelector("#clearBtn")
+clearButton.addEventListener("click", clearSchedule);
 
 
 //clicks button "Save"

@@ -47,6 +47,7 @@ textarea{
   border-bottom: 10px solid black;
 }
 
+
 .description{
   white-space: pre-wrap;
 }
@@ -102,4 +103,6 @@ textarea{
   transition: all .3s ease-in-out;
 }
 
-
+.clearBtn{
+  text-align: right;
+}
