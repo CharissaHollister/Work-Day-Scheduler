@@ -2,6 +2,17 @@
 //authored by Charissa Hollister 05/10/2022
 //**************************** */
 
+// task object array
+//task information array //no clue yet what we want to include
+// starting tasksUsed "empty array"
+  //blah blah is constant for testing
+
+//code for pulling in local storage or creating new
+// var tasksUsed;
+// var todayTasks = localStorage.getItem("tasksUsed");
+//     if (tasksUsed) {tasksUsed = JSON.parse(todayTasks)} 
+//     else {tasksUsed = [];}
+// console.log(tasksUsed)
 
 //---------Global variables-----------
 //Get the current date and time with Moment.js for header
@@ -16,36 +27,54 @@ if (setDate) {
 //current hour for color indicators
   var currentHour = moment().hour()
   console.log(currentHour)
+  console.log(setDate)
+  console.log(todayDate)
+var hour1 = $("#hour1")
+var hour2=  $("#hour2")
+var hour3=  $("#hour3")
+var hour4=  $("#hour4")
+var taskInfo = [
+    {hour1:""},
+    {hour2:""},
+    {hour3:""},
+    {hour4:""},
+];
+var lsTaskInfo = JSON.parse(localStorage.getItem("taskInfo"))
+var timeBlock = document.querySelector(".time-block");
+var hour1 = document.querySelector("#hour1");
+var inputs;
+var saveBtn = document.querySelector(".saveBtn");
+
+////when they type in info field
+timeBlock.addEventListener("input",function(event){
+    inputs = {[event.target.id]:event.target.value}
+})
 
 
 
+// when they click save 
+saveBtn.addEventListener("click",function(){
+    if(lsTaskInfo?.length){
+        taskInfo = lsTaskInfo;
+    }
+for (var i = 0; i< taskInfo.length; i++){
+    //add input to task info
+    taskInfo[i] = (`hour${i+1}`).value //????
+}
+    console.log(task)
+localStorage.setItem("taskInfo",JSON.stringify(taskInfo))
+console.log(taskInfo)
+} );
 
-// task object array
-//task information array //no clue yet what we want to include
-// starting tasksUsed "empty array"
-var tasksEmpty = [   //blah blah is constant for testing
-    {time:9,hourNum: 1, taskInfo:"blah blah", saveBtnNum: "save1"},
-    {time:10,hourNum: 2, taskInfo:"", saveBtnNum: "save2"},
-    {time:11,hourNum: 3, taskInfo:"", saveBtnNum: "save3"},
-    {time:12,hourNum: 4, taskInfo:"", saveBtnNum: "save4"},
-    {time:1,hourNum: 5, taskInfo:"", saveBtnNum: "save5"},
-    {time:2,hourNum: 6, taskInfo:"", saveBtnNum: "save6"},
-    {time:3,hourNum: 7, taskInfo:"", saveBtnNum: "save7"},
-    {time:4,hourNum: 8, taskInfo:"", saveBtnNum: "save8"},
-    {time:5,hourNum: 9, taskInfo:"", saveBtnNum: "save9"},
-]
-//code for pulling in local storage or creating new
-var tasksUsed;
-var todayTasks = localStorage.getItem("tasksUsed");
-    if (tasksUsed) {tasksUsed = JSON.parse(todayTasks)} 
-    else {tasksUsed = tasksEmpty;}
-console.log(tasksUsed)
+// for (var i= 0;i < lsTaskInfo.length; i++){
+//     var hour = document.getElementById(`hour${i+1}`)
+// if(lsTaskInfo.length){
+//     hour.textContent = lsTaskInfo[i]
+// }
+// }
+// function fillInTasks(){
 
-
-
-
-
-
+// }
 
 //-----------Code------------
 
@@ -67,22 +96,20 @@ populateTasks();
 
 
 //////check if date in ls is before today's date
-function checkDate(){timeBlockCreation()
+// function checkDate(){//timeBlockCreation()
 //     if(setDate){
-//        var now = JSON.stringify("Sunday May 15th 2022");     //var now = JSON.stringify(todayDate); 
-//         //var testDate = new Date(setDate);
-//         //console.log(lsDate);
+//     //    var now = JSON.stringify("Sunday May 15th 2022");     
+//        var now = JSON.stringify(todayDate); 
 //         console.log(now);
-//         // console.log(todayDate);
-//         // console.log(testDate);
 //         console.log(setDate)
-//         if(now === setDate){keepTimeBlock();}
+//         console.log(todayDate)
+//         if(now == setDate){keepTimeBlock();}
 //             else
-//             {var clearKeep = 'keep'     //prompt("enter 'clear' if you want to clear schedule or 'keep' keep previous date and tasks?");
+//             {var clearKeep = prompt("enter 'clear' if you want to clear schedule or 'keep' keep previous date and tasks?");
 //                 clearKeep = clearKeep.toLowerCase();
 //                 console.log(clearKeep)
-//             if(clearKeep = 'clear') {clearSchedule();}
-//             else if(clearKeep = 'keep') {populateTasks();}  
+//             if(clearKeep === 'clear') {clearSchedule();}
+//             else if(clearKeep === 'keep') {populateTasks();}  
 //             else {checkDate();}
 //             console.log(clearKeep)
 //             keepTimeBlock()
@@ -91,7 +118,7 @@ function checkDate(){timeBlockCreation()
 //     else {
 //         timeBlockCreation();
 //     }
-    } 
+//     } 
 
 
 //---put date in header---
@@ -104,8 +131,8 @@ function timeBlockCreation(){
     dateBlock.textContent = dateUsed;
     localStorage.setItem("dateUsed", JSON.stringify(dateUsed));   //({'dateUsed': new Date()}));
 }
-window.onload = checkDate();
-
+//window.onload = checkDate();
+timeBlockCreation();
 
 
 //------color indicator of past, present, future-----
