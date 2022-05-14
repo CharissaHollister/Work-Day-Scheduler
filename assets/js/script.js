@@ -4,7 +4,7 @@
 
 
 //---------Global variables-----------
-//Get the current date and time with Moment.js 
+//Get the current date and time with Moment.js for header
 const todayDate = moment().format("dddd MMM Do YYYY"); //current date
 var dateUsed;                                   //date in local storage
 var setDate = localStorage.getItem("dateUsed"); //date to use
@@ -13,61 +13,34 @@ if (setDate) {
   } else {
     dateUsed = todayDate;
   }
+//current hour for color indicators
+  var currentHour = moment().hour()
 
-  //const hoursArray;
-//console.log(hoursArray)
+
+
 
 // task object array
-//var todayTasks;
-    // var todayTasks = localStorage.getItem("tasksUsed"); //date to use
-    // if (tasksUsed) {
-    //     tasksUsed = JSON.parse(todayTasks);
-    //   } else {
-    //     tasksUsed = todayTasks;
-    //   }
-    // const hours = [
-    //     {
-    //     hour1: "9am",
-    //     hour2: "10am",
-    //     hour3: "11am",
-    //     hour4: "12pm",
-    //     hour5: "1pm",
-    //     hour6: "2pm",
-    //     hour7: "3pm",
-    //     hour8: "4pm",
-        
-    //     }
-    //   ]
+//task information array //no clue yet what we want to include
+// starting tasksUsed "empty array"
+var tasksEmpty = [   //blah blah is constant for testing
+    {time:9,hourNum: 1, taskInfo:"blah blah", saveBtnNum: "save1"},
+    {time:10,hourNum: 2, taskInfo:"", saveBtnNum: "save2"},
+    {time:11,hourNum: 3, taskInfo:"", saveBtnNum: "save3"},
+    {time:12,hourNum: 4, taskInfo:"", saveBtnNum: "save4"},
+    {time:1,hourNum: 5, taskInfo:"", saveBtnNum: "save5"},
+    {time:2,hourNum: 6, taskInfo:"", saveBtnNum: "save6"},
+    {time:3,hourNum: 7, taskInfo:"", saveBtnNum: "save7"},
+    {time:4,hourNum: 8, taskInfo:"", saveBtnNum: "save8"},
+    {time:5,hourNum: 9, taskInfo:"", saveBtnNum: "save9"},
+]
+//code for pulling in local storage or creating new
+var tasksUsed;
+var todayTasks = localStorage.getItem("tasksUsed");
+    if (tasksUsed) {tasksUsed = JSON.parse(todayTasks)} 
+    else {tasksUsed = tasksEmpty;}
+console.log(tasksUsed)
 
 
-
-var currentHour = moment().hour()
-var hourBlock = []
-
-var tasksUsed = ["blah blah", "beep beep"]
-
-//-----------Get references from HTML------------
-// 9-17
-
-
-function timeBlockCreation(){
-    var dateBlock = document.querySelector("#currentDay");
-    dateBlock.textContent = dateUsed;
-    localStorage.setItem("dateUsed", JSON.stringify(dateUsed));
-}
-timeBlockCreation();
-
-function relativeTime(){
-for(var i=9; i < 18 ; i++){
-        if(currentHour < i){
-            var sectionNow = document.querySelector(".hour1")
-        $(sectionNow).addClass("past")}
-    else if(currentHour == i){$(sectionNow).addClass("present")}
-    else {$(sectionNow).addClass("future")}
-}
-
-}
-relativeTime();
 
 
 
@@ -80,6 +53,28 @@ relativeTime();
 
 
 //---------define functions---------
+function timeBlockCreation(){
+    var dateBlock = document.querySelector("#currentDay");
+    dateBlock.textContent = dateUsed;
+    localStorage.setItem("dateUsed", JSON.stringify(dateUsed));
+}
+timeBlockCreation();
+//currentHour = 12 //constant for testing
+function relativeTime(){
+for(var i=1; i < 10 ; i++){
+    ii = i + 8;
+        if(currentHour < ii){
+            $("#hour" + i).addClass("past");}
+    else if(currentHour === ii){$("#hour" + i).addClass("present");}
+    else {$("#hour" + i).addClass("future");}
+}}
+relativeTime();
+
+
+
+
+
+
 
 
 //function to clear local storage
