@@ -15,6 +15,7 @@ if (setDate) {
   }
 //current hour for color indicators
   var currentHour = moment().hour()
+  console.log(currentHour)
 
 
 
@@ -53,21 +54,68 @@ console.log(tasksUsed)
 
 
 //---------define functions---------
+////to fill in each hour's tasks
+function populateTasks(){
+    for(var i=1; i < 10 ; i++){
+        var taskBlock = document.getElementById("hour" + i)
+        var taskInfoSet = tasksUsed[(i-1)].taskInfo;
+        taskBlock.textContent = taskInfoSet;
+        console.log(taskBlock.textContent);
+    }
+}
+populateTasks();
 
-//---date in header---
+
+//////check if date in ls is before today's date
+function checkDate(){timeBlockCreation()
+//     if(setDate){
+//        var now = JSON.stringify("Sunday May 15th 2022");     //var now = JSON.stringify(todayDate); 
+//         //var testDate = new Date(setDate);
+//         //console.log(lsDate);
+//         console.log(now);
+//         // console.log(todayDate);
+//         // console.log(testDate);
+//         console.log(setDate)
+//         if(now === setDate){keepTimeBlock();}
+//             else
+//             {var clearKeep = 'keep'     //prompt("enter 'clear' if you want to clear schedule or 'keep' keep previous date and tasks?");
+//                 clearKeep = clearKeep.toLowerCase();
+//                 console.log(clearKeep)
+//             if(clearKeep = 'clear') {clearSchedule();}
+//             else if(clearKeep = 'keep') {populateTasks();}  
+//             else {checkDate();}
+//             console.log(clearKeep)
+//             keepTimeBlock()
+//             } 
+//     }
+//     else {
+//         timeBlockCreation();
+//     }
+    } 
+
+
+//---put date in header---
+function keepTimeBlock(){
+    var dateBlock = document.querySelector("#currentDay");
+    dateBlock.textContent = dateUsed;
+}
 function timeBlockCreation(){
     var dateBlock = document.querySelector("#currentDay");
     dateBlock.textContent = dateUsed;
-    localStorage.setItem("dateUsed", JSON.stringify(dateUsed));
+    localStorage.setItem("dateUsed", JSON.stringify(dateUsed));   //({'dateUsed': new Date()}));
 }
-timeBlockCreation();
+window.onload = checkDate();
+
+
 
 //------color indicator of past, present, future-----
 //currentHour = 12 //constant for testing
 function relativeTime(){
 for(var i=1; i < 10 ; i++){
     ii = i + 8;
-        if(currentHour < ii){
+    console.log(currentHour);
+    console.log(ii);
+        if(currentHour > ii){
             $("#hour" + i).addClass("past");}
     else if(currentHour === ii){$("#hour" + i).addClass("present");}
     else {$("#hour" + i).addClass("future");}
@@ -82,42 +130,17 @@ relativeTime();
 
 
 
-
 // function to clear local storage
 function clearSchedule() {
     if (confirm("Current tasks will be deleted; Proceed with 'Clear Schedule'?"))
     {    localStorage.clear();
-        location.reload();}
+        location.reload();
+    }
   }
 
-//if nothing in localStorage, create a new object to track all task status arrays
 
 
-//-------create elements------------
-//create header row 
-//create paragraph row 
-//create row for current date 
-//clear schedule button 
-// Create TimeBlocks in grid format
-////add in to warn that local storage will clear if todayDate isn't setDate
-// function hourBlockCreation(){
-//     var hourBlock = document.querySelector("#firstHour");
-//     hourBlock.textContent = tasksUsed[0];
-//    // localStorage.setItem("tasksUsed[0]", JSON.stringify(tasksUsed[0]));
-// }
 
-    //create rows for each hour Block 9 to 5 with margins left and right
-        //col 1 hour block -1 column
-        //col 2 event info -10 columns
-        //col 3 save block -1 column
-
-//---------Date Input--------------
-//get date from local storage
-    //if date empty in local storage put in today's date
-    
-    //if date is today continue
-    //if date in ls is the past ask user if they would like to 
-    //clear ls and continue with today OR keep old date and tasks
 
 //-----------color blocks--------
     //figure out if want to run every 15 mins 
