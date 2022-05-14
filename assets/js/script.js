@@ -4,23 +4,72 @@
 
 
 //---------Global variables-----------
-
-var todayDate = moment().format("MMM Do YY");  
-var dateUsed;
-var setDate = localStorage.getItem("dateUsed");
+//Get the current date and time with Moment.js 
+const todayDate = moment().format("dddd MMM Do YYYY"); //current date
+var dateUsed;                                   //date in local storage
+var setDate = localStorage.getItem("dateUsed"); //date to use
 if (setDate) {
     dateUsed = JSON.parse(setDate);
   } else {
-    dateUsed = [];
+    dateUsed = todayDate;
   }
-var todayTasks = {
-    // info: "",
-    // timeBlock: ""
-  };
 
+  //const hoursArray;
+//console.log(hoursArray)
+
+// task object array
+//var todayTasks;
+    // var todayTasks = localStorage.getItem("tasksUsed"); //date to use
+    // if (tasksUsed) {
+    //     tasksUsed = JSON.parse(todayTasks);
+    //   } else {
+    //     tasksUsed = todayTasks;
+    //   }
+    // const hours = [
+    //     {
+    //     hour1: "9am",
+    //     hour2: "10am",
+    //     hour3: "11am",
+    //     hour4: "12pm",
+    //     hour5: "1pm",
+    //     hour6: "2pm",
+    //     hour7: "3pm",
+    //     hour8: "4pm",
+        
+    //     }
+    //   ]
+
+
+
+var currentHour = moment().hour()
+var hourBlock = []
+
+var tasksUsed = ["blah blah", "beep beep"]
 
 //-----------Get references from HTML------------
-//var xxx = document.querySelector("#yyy");
+// 9-17
+
+
+function timeBlockCreation(){
+    var dateBlock = document.querySelector("#currentDay");
+    dateBlock.textContent = dateUsed;
+    localStorage.setItem("dateUsed", JSON.stringify(dateUsed));
+}
+timeBlockCreation();
+
+function relativeTime(){
+for(var i=9; i < 18 ; i++){
+        if(currentHour < i){
+            var sectionNow = document.querySelector(".hour1")
+        $(sectionNow).addClass("past")}
+    else if(currentHour == i){$(sectionNow).addClass("present")}
+    else {$(sectionNow).addClass("future")}
+}
+
+}
+relativeTime();
+
+
 
 
 
@@ -32,11 +81,12 @@ var todayTasks = {
 
 //---------define functions---------
 
+
 //function to clear local storage
-function clearSchedule() {
-    localStorage.clear();
-    location.reload();
-  }
+// function clearSchedule() {
+//     localStorage.clear();
+//     location.reload();
+//   }
 
 //if nothing in localStorage, create a new object to track all task status arrays
 
@@ -47,6 +97,13 @@ function clearSchedule() {
 //create row for current date 
 //clear schedule button 
 // Create TimeBlocks in grid format
+////add in to warn that local storage will clear if todayDate isn't setDate
+// function hourBlockCreation(){
+//     var hourBlock = document.querySelector("#firstHour");
+//     hourBlock.textContent = tasksUsed[0];
+//    // localStorage.setItem("tasksUsed[0]", JSON.stringify(tasksUsed[0]));
+// }
+
     //create rows for each hour Block 9 to 5 with margins left and right
         //col 1 hour block -1 column
         //col 2 event info -10 columns
@@ -97,8 +154,8 @@ function clearSchedule() {
 //---------------Add event listener-----------
 
 //clicks button "clearSchedule"  //clear ls  //refresh the page anew
-var clearButton = document.querySelector(".xxx")
-clearButton.addEventListener("click", clearSchedule);
+// var clearButton = document.querySelector(".xxx")
+// clearButton.addEventListener("click", clearSchedule);
 
 
 //clicks button "Save"
