@@ -3,16 +3,27 @@
 Authored by Charissa Hollister 05/10/2022
 
 ## Description
-<br />
+An interactive webpage that allows the user to stay organized for the work day. Users will be given 
+a schedule for 9AM to 5PM with the opportunity to enter in tasks or events within one or multiple hour blocks
+and save these entries. If an error is made or an event changes, the user can simply click the task/event block they
+wish to modify and type in the new wording and click Save to overwrite the previous task/event details.
+The current hour will have highlighting to help users stay on track with what is past or coming. 
+Tasks/events entered in will be maintained so the user is free to leave the webpage and return when they 
+are ready to evaluate their schedule again. If the user is no longer pleased with the events listed or simply wants to 
+start afresh, then there is a clear schedule option available to create the desired clean slate. <br />
 
-## HTML
-List notes and features here<br />
+## HTML, CSS, Script Features
+Upon opening the page will be clear of any events; once a schedule is started the saved events 
+will be displayed until they are changed and saved or schedule is manually cleared<br />
+Page can be closed and reopened without losing the current schedule<br />
+Hour Blocks are displayed for a 9-5 workday<br />
+Tasks or Events can be typed into each hour block by the user<br />
+Hour Blocks change colors to represent current time, past, and future<br />
+Save buttons are present to move event details into local storage to retrieve later<br />
+Date located in the header is today's date- Displays day of the week, month, day, and year<br />
+Clear schedule button to allow the local storage to be emptied and get a fresh schedule;
+Clear Schedule will prompt for confirmation to ensure it isn't accidentally clicked<br />
 
-## CSS
-List notes and features here<br />
-
-## Script
-List notes and features here<br />
 
 
 ## Website Access
@@ -25,7 +36,12 @@ https://github.com/CharissaHollister/Work-Day-Scheduler
 
 
 ## Future improvement opportunities
-List them here<br />
+Save date to local storage and ask user if they would like to keep or clear schedule if it's a new day<br />
+Add ability to choose hours to represent your workday<br />
+Change font color and center and border when entering in event details<br />
+Add word wrap and inputBox adjust to fit content to allow longer events<br />
+Allow to do previous day and next day also<br />
+Allow for user picked color pallette<br />
 
 
 ### Minimum customer criteria
