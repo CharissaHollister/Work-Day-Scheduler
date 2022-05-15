@@ -36,15 +36,15 @@ relativeTime();
 
 //task info sets
 var taskInfoEmpty = [
-    {Info:"dfgarg11"},
     {Info:""},
-    {Info:"dfgarg3"},
-    {Info:"dfgarg4"},
+    {Info:""},
+    {Info:""},
+    {Info:""},
     {Info:""},
 ];
 var taskInfo = []
-var lsTaskInfo = JSON.parse(localStorage.getItem("lstaskInfo"))
-    if(lsTaskInfo){taskInfo=lsTaskInfo}
+var lsTaskInfo = JSON.parse(localStorage.getItem("taskInfo"))
+    if(lsTaskInfo){taskInfo = lsTaskInfo}
     else
     {taskInfo = taskInfoEmpty}
 console.log(taskInfo)
@@ -53,8 +53,8 @@ console.log(taskInfo)
 function populateTasks(){
     for(var i=0; i < taskInfo.length ; i++){
         var ii = i + 1;
-        if(taskInfo[i].Info){
-    $('#hour' + ii).val(taskInfo[i].Info);}
+        if(taskInfo[i]){
+    $('#hour' + ii).val(taskInfo[i]);}
     else{  $('#hour' + ii).val(" ");}
 }
 }
@@ -86,6 +86,14 @@ localStorage.setItem("taskInfo",JSON.stringify(taskInfo))
 //saveTasks()
 var saveBtnX = document.querySelector(".saveBtn");
 saveBtnX.addEventListener("click",saveTasks);
+
+// accessing the element
+const element = document.querySelector('.blue');
+
+// adding the event listener
+element.addEventListner('click', (e)=>{
+    console.log('someone hit me');
+});
 
 
 

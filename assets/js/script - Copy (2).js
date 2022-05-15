@@ -1,3 +1,112 @@
+//////////////////code form Gary///////////////
+
+
+//grabs current date using moment
+var todaysDate = moment().format("MMMM Do, YYYY");
+//grabbing the current day element using jquery
+var currentDay = $("#currentDay");
+//grabbing the timeblocks container element using jquery
+var timeblocks = $("#time-blocks");
+//setting the hours in an array
+var timeDetails = JSON.parse(localStorage.getItem("times"));
+console.log(timeDetails);
+
+//function sets the current date and adds the content to the url using jquery
+function setCurrentDay() {
+  currentDay.text(todaysDate);
+}
+
+function setTimeBlocks() {
+  //startTime variable sets the start time at 9 am using moment
+  var startTime = moment().set("hour", 9).format("h A");
+
+  //for loop to append timeblocks to the timeblocks element
+  for (var i = 0; i < 9; i++) {
+    //setTime variable adds one hour of time to startTime variable and addes it to the timeblock variable
+    var setTime = moment(startTime, "h A").add(i, "h").format("h A");
+    var timeDetail = timeDetails?.filter((detail) => i === parseInt(detail.id));
+
+    // timeblock variable sets the block of code with all of the elements and classes
+    //the elements are put in jquery $ and then ` to create a template
+
+    var timeblock =
+      $(`<div class="time-block row d-flex justify-content-center">
+        <div class="hour col-sm-1 text-right p-2">${setTime}</div>
+        <textarea id="hour${i}" class="input col-sm-8" >${
+        timeDetail
+          ? timeDetail[0]?.description
+            ? timeDetail[0]?.description
+            : ""
+          : ""
+      }</textarea>
+        <button id="${i}" class="saveBtn col-sm-1"><i class="fas fa-save"></i></button>
+      </div>`);
+
+    //appends timeblock to the timeblocks element
+    timeblocks.append(timeblock);
+  }
+}
+
+timeblocks.on("click", "button", function (event) {
+  var id = event.target.id;
+  // var textareas = document.getElementsByClassName("input");
+
+  var description = $(`#hour${id}`).val();
+
+  var newTimeArray = [];
+  console.log(id, description);
+
+  if (timeDetails?.length) {
+    for (var i = 0; i < timeDetails.length; i++) {
+      if (parseInt(timeDetails[i].id) === id) {
+        newTimeArray = timeDetails.splice(i, 1);
+      }
+    }
+
+    // newTimeArray = await timeDetails.filter(function (detail) {
+    //   return detail.id !== id;
+    // });
+    newTimeArray.push({ id: id, description: description });
+
+    console.log(newTimeArray);
+    localStorage.setItem("times", JSON.stringify(newTimeArray));
+    // window.location.reload();
+  } else {
+    if (description) {
+      newTimeArray.push({
+        id: id,
+        description: description,
+      });
+      localStorage.setItem("times", JSON.stringify(newTimeArray));
+      //   window.location.reload();
+    }
+    console.log(newTimeArray);
+  }
+});
+
+setCurrentDay();
+setTimeBlocks();
+
+
+
+///////end code from Gary////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Global variables 
 
 
