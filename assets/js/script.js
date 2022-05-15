@@ -85,7 +85,7 @@ localStorage.setItem("taskInfo",JSON.stringify(taskInfo))
 }
 //saveTasks()
 var saveBtnX = document.querySelector(".saveBtn");
-saveBtnX.addEventListener("click",saveTasks());
+saveBtnX.addEventListener("click",saveTasks);
 
 
 
