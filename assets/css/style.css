@@ -1,4 +1,4 @@
-/* CWork Day Scheduler */
+/* Work Day Scheduler */
 /*Modified by Charissa Hollister 05/10/2022*/
 /***************************** */
 
@@ -8,19 +8,6 @@
 *::after {
   box-sizing: border-box;
 }
-
-/*variables*/
-/* :root { */
-  /* --primary-color: #e56fea;
-  --secondary-color: ivory;
-  --bg-color:  #2a607c;
-  --bg-color2: #0076c6;
-  --padding: 20px;
-  --blur: 10px;
-} */
-
-/*general selectors*/
-
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -36,7 +23,6 @@ textarea{
   border-left: 1px solid black;
   padding: 10px;
 }
-
 
 /*hero background image and description*/
 .jumbotron {
@@ -97,11 +83,13 @@ textarea{
   color: white;
 }
 
-.saveBtn i:hover {
+.saveBtn:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
 
 .clearBtn{
-  text-align: right;
+  text-align: center;
+  padding-top:25px;
+  padding-left:30vw;
 }

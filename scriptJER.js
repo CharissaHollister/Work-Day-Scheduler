@@ -35,10 +35,10 @@ relativeTime();
 //----------------Task info-------------------
 
 //task info sets
-var taskInfoEmpty = ["","","","","","","","",""];
-var taskInfo;
-var lsTaskInfo = JSON.parse(localStorage.getItem("taskInfo"))
-    if(lsTaskInfo){taskInfo = lsTaskInfo}
+var taskInfoEmpty = ["","","","","","","","",""]
+var taskInfo = []
+var lsTaskInfo = JSON.parse(localStorage.getItem("lstaskInfo"))
+    if(lsTaskInfo){taskInfo=lsTaskInfo}
     else
     {taskInfo = taskInfoEmpty}
 console.log(taskInfo)
@@ -74,13 +74,12 @@ for (var i = 0; i< taskInfo.length; i++){
     if (taskInfoEntry){
     taskInfo[i]= taskInfoEntry;}
     else{taskInfo[i] = ""}
-}
+console.log(taskInfo)}
 localStorage.setItem("taskInfo",JSON.stringify(taskInfo))
 }
 //saveTasks()
-var saveBtnX = document.querySelector(".savingButton");
+var saveBtnX = document.querySelector(".saveBtn1");
 saveBtnX.addEventListener("click",saveTasks);
-
 
 
 

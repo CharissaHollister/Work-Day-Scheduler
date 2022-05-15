@@ -3,7 +3,7 @@
 Authored by Charissa Hollister 05/10/2022
 
 ## Description
-List notes and overall site features here<br />
+<br />
 
 ## HTML
 List notes and features here<br />
@@ -17,7 +17,9 @@ List notes and features here<br />
 
 ## Website Access
 ### URL Live Webpage: 
+https://charissahollister.github.io/Work-Day-Scheduler/
 ### GitHub Repo:
+https://github.com/CharissaHollister/Work-Day-Scheduler
 
 ![ScreenShot](./assets/images/ScreenshotWebPage.jpg)
 
